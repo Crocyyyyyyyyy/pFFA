@@ -52,12 +52,12 @@ public class MiscListener implements Listener {
             return;
         User user = plugin.getSM().getUserManager().getUser(event.getPlayer());
         // Left click = respawn with last kit and spawn
-        // Right click = respawn with default kit and spawn
+        // Right click = respawn with last kit and spawn
         Kit kit;
         Spawn spawn;
         if (event.getAction().name().contains("RIGHT")) {
-            kit = plugin.getSM().getKitManager().getDefaultKit();
-            spawn = plugin.getSM().getSpawnManager().getDefaultSpawn();
+            kit = user.getLastKit();
+            spawn = user.getLastSpawn();
         } else if (event.getAction().name().contains("LEFT")) {
             kit = user.getLastKit();
             spawn = user.getLastSpawn();
